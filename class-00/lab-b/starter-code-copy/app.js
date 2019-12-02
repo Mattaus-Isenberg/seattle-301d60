@@ -143,7 +143,7 @@ let Student = function(name, age, hometown){
   this.hometown = hometown;
 };
 
-let joe = new Student('Joe', 100, 'Schmoe');
+let joe = new Student('Joe', 'Schmoe', 100);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
@@ -159,14 +159,15 @@ Student.prototype.greeting = function() {
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-console.log(joe.greeting());
+// console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.courseName = ()=> 'This student is enrolled in Code 301.';
-
+Student.courseName = function() {
+  return 'This student is enrolled in Code 301.';
+};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(Student.courseName());
@@ -175,8 +176,9 @@ console.log(Student.courseName());
 
 // STEP 11
 // How do arrow functions affect constructor functions?
-Student.prototype.scope = ()=> console.log(this);
-
+Student.prototype.scope = function() {
+  console.log(this);
+};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(joe.scope());
@@ -184,12 +186,13 @@ console.log(joe.scope());
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(joe.scopeArrow());
+// console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
 //its the self, the object instance making the call. When using arrow function then this is refering to the global window object and not an instance of joe.
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//its the self, the object instance making the call. When using arrow function then this is refering to the global window object and not an instance of joe.
+//When using arrow function then this is refering to the global window object and not an instance of joe.
 // 3. Explain why "this" is different when an arrow function is used.
 //Outside of the object it follows variable search rules and the call is considered outside the object as it is, so the call is actually being done to the global window object which is why it returns undefined.
+
